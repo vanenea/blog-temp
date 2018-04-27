@@ -2,7 +2,7 @@ package com.blog.model;
 
 import java.io.Serializable;
 
-public class Contents implements Serializable {
+public class Content implements Serializable {
 	
 	private static final long serialVersionUID = -690346241980116516L;
 	
@@ -22,10 +22,10 @@ public class Contents implements Serializable {
 	private boolean allowComment;
 	private boolean allowPing;
 	private boolean allowFeed;
-	public Contents() {
+	public Content() {
 		super();
 	}
-	public Contents(Integer cid, String title, String slug, Integer created, Integer modified, String content,
+	public Content(Integer cid, String title, String slug, Integer created, Integer modified, String content,
 			Integer authorId, String type, String status, String tags, String categories, Integer hits,
 			Integer commentsNum, boolean allowComment, boolean allowPing, boolean allowFeed) {
 		super();
@@ -172,7 +172,7 @@ public class Contents implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Contents other = (Contents) obj;
+		Content other = (Content) obj;
 		if (allowComment != other.allowComment)
 			return false;
 		if (allowFeed != other.allowFeed)
