@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+  <context id="context1">
+  	<commentGenerator>
+  		<!-- 是否去除自动生成的注释 true：是 ： false:否 -->
+		<property name="suppressAllComments" value="false"/>
+		<!-- 不希望生成的注释中包含时间戳 -->
+		<property name="suppressDate" value="true" />
+		<!-- 是否  自动为每一个生成的类创建一个构造方法-->
+<property name="constructorBased" value="false"/>
+  	</commentGenerator>
+    <jdbcConnection connectionURL="jdbc:mysql://192.168.1.254:3306/tale" driverClass="com.mysql.jdbc.Driver" password="root" userId="root" />
+    <javaModelGenerator targetPackage="com.blog.model" targetProject="blog/src/main/java" />
+    <sqlMapGenerator targetPackage="mapper" targetProject="blog/src/main/resources" />
+    <javaClientGenerator targetPackage="com.blog.dao" targetProject="blog/src/main/java" type="XMLMAPPER" />
+    <table tableName="t_comments" domainObjectName="Comment">
+    </table>
+  </context>
+</generatorConfiguration>
