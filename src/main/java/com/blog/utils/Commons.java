@@ -49,6 +49,11 @@ public class Commons {
 		return "/article/" + url;
 	}
 	
+	public static String permalink(Integer cid,String slug) {
+		String url = StringUtils.isEmpty(slug)?cid.toString():slug;
+		return "/article/" + url;
+	}
+	
 	public static String show_thumb(Content content) {
 		int cid = content.getCid();
         int size = cid % 20;
@@ -93,7 +98,7 @@ public class Commons {
     }
     
     public static String fmtdate(long expired) {
-    	return DateKit.stringFormat(new Date(expired), "yyyy-MM");
+    	return DateKit.stringFormat(new Date(expired*1000), "yyyy-MM");
     }
     
     public static String fmtdate(long expired,String format) {
@@ -150,4 +155,6 @@ public class Commons {
         String hash = TaleUtils.MD5encode(email.trim().toLowerCase());
         return avatarUrl + hash + ".png";
     }
+    
+ 
 }

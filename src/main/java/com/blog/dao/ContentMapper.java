@@ -3,6 +3,7 @@ package com.blog.dao;
 import java.util.List;
 
 import com.blog.model.Content;
+import com.blog.model.ContentBo;
 
 public interface ContentMapper {
 
@@ -18,5 +19,16 @@ public interface ContentMapper {
 	 * @return
 	 */
 	Content findContentByCondition(Content content);
-		
+	
+	/**
+	 * 找到ContentBo集合
+	 * @return
+	 */
+	List<ContentBo> findContent();
+	
+	/**
+	 *	根据日期分类
+	 * @return
+	 */
+	List<Content> findContentByDate(String date);
 }

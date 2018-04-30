@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.blog.dao.ContentMapper;
 import com.blog.model.Content;
+import com.blog.model.ContentBo;
 import com.blog.service.IContentService;
 import com.blog.utils.Tools;
 import com.github.pagehelper.PageHelper;
@@ -46,6 +47,20 @@ public class ContentServiceImpl implements IContentService {
 			}
 		}
 		return null;
+	}
+
+	@Override
+	public List<ContentBo> findContentOrderDate() {
+		List<ContentBo> contentBo = contentMapper.findContent();
+		if(contentBo.size()>0) {
+			contentBo.forEach( contentBo1->{
+				String date = contentBo1.getDate();
+				List<Content> content = contentMapper.findContentByDate(date);
+				contentBo1.setArticles(content);
+				
+			});
+		}
+		return contentBo;
 	}
 
 	

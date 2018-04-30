@@ -63,4 +63,39 @@
 			</if>
 		</where>
 	</select>
+	
+	<resultMap id="archiveBoMap" type="com.blog.model.ContentBo">
+	    <id column="date" property="date"/>
+	    <result column="count" property="count"/>
+  	</resultMap>
+  	
+  	<!--
+	 * 找到ContentBo集合
+	 * @return
+	List<ContentBo> findContentByCondition(); -->
+  	<select id="findContent" resultMap="archiveBoMap">
+  		select 
+  			FROM_UNIXTIME(created,'%Y年%m月') 	AS date,
+  			count(*) 							AS count
+  		from
+  			t_contents
+  		GROUP BY
+  			date
+  		ORDER BY
+  			date DESC
+  	</select>
+  	
+  <!-- 	
+	 *	根据日期分类
+	 * @return
+	List<Content> findContentByDate(String date); -->
+  	<select id="findContentByDate" resultMap="BaseResultMap" parameterType="java.lang.String">
+  		SELECT
+			<include refid="Base_Column_List"/>,
+			FROM_UNIXTIME(created, '%Y年%m月') AS date1
+		FROM 
+			t_contents
+		HAVING
+			date1=#{date}
+  	</select>
 </mapper>
